@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: docker login
         env:
@@ -28,8 +28,8 @@ jobs:
         run: |
           # Build a docker container and push it to ECR
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
-          docker build -t $REGISTRY/$REPOSITORY .
+          docker build -t $REGISTRY/$REPOSITORY:${{github.ref_name}} .
           echo "Pushing image to DockerHub..."
-          echo "repo name: $REGISTRY/$REPOSITORY"
-          docker push $REGISTRY/$REPOSITORY
+          echo "repo name: $REGISTRY/$REPOSITORY:${{github.ref_name}}"
+          docker push $REGISTRY/$REPOSITORY:${{github.ref_name}}
           echo "::set-output name=image::$REGISTRY/$REPOSITORY:${GITHUB_REF##*/}-$git_hash"
