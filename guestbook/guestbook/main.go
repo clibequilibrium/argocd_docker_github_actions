@@ -228,7 +228,7 @@ func getPrimaryTone(value string, headers http.Header) (tone string) {
 		return body[0].ToneName
 	}
 
-	return "No Tone Detected"
+	return "No Tone Detected QWEQWEQ"
 }
 
 // return the needed header for distributed tracing
