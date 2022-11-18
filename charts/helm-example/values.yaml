@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   pullPolicy: IfNotPresent
   repository: clibequilibrium/sample
-  version: b8a3dd9
+  version: f08f7c6
 
 imagePullSecrets: []
 nameOverride: ""
